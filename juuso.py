@@ -20,8 +20,8 @@ def jaa_pelaajat_kahteen_lohkoon(players: List[str]) -> Dict[str, List[str]]:
 
 
 # Osa 2: Laske otteluparit lohkoille.
-#   - 'players_in_group' on yhden lohkon pelaajista.
-#   - Otteluparit muodostetaan siten, että lohkon jokainen pelaaja pelaa lohkon jokaista muuta pelaajaa vastaan.
+#   - 'players_in_group' on lista yhden lohkon pelaajista.
+#   - Otteluparit muodostetaan siten, että lohkon jokainen pelaaja pelaa lohkon jokaista muuta pelaajaa vastaan kerran.
 #   - Paluusanoman on oltava lista ottelupareista (tuple).
 #       - Esimerkiksi: [("Ville", "Juuso"), ("Juuso", "Ilmari"), ("Ville, "Ilmari")]
 def laske_otteluparit(players_in_group: List[str]) -> List[Tuple[str]]:
