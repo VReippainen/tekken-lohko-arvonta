@@ -1,5 +1,5 @@
 import unittest
-from juuso import jaa_pelaajat_kahteen_lohkoon
+from juuso import jaa_pelaajat_kahteen_lohkoon, laske_otteluparit
 from valhalla.odin import anna_runtua
 
 def stopTestRun(run):
@@ -72,6 +72,21 @@ class TestSplitToTwoRandomGroups(unittest.TestCase):
         player_names = [str(x) for x in range(999)]
         groups = jaa_pelaajat_kahteen_lohkoon(player_names)
         self.assertEqual(abs(len(groups["Lohko A"]) - len(groups["Lohko B"])), 1)
+
+    def test_empty_list(self):
+        self.assertEqual(laske_otteluparit([]), [])
+
+    def test_single_player(self):
+        self.assertEqual(laske_otteluparit(['Juuso']), [])
+
+    def test_two_players(self):
+        self.assertEqual(laske_otteluparit(['Juuso', 'Ville']), [('Juuso', 'Ville')])
+
+    def test_three_players(self):
+        self.assertEqual(laske_otteluparit(['Juuso', 'Ville', 'Luke']), [('Juuso', 'Ville'), ('Juuso', 'Luke'), ('Ville', 'Luke')])
+
+    def test_four_players(self):
+        self.assertEqual(laske_otteluparit(['Juuso', 'Ville', 'Luke', 'Piispanen']), [('Juuso', 'Ville'), ('Juuso', 'Luke'), ('Juuso', 'Piispanen'), ('Ville', 'Luke'), ('Ville', 'Piispanen'), ('Luke', 'Piispanen')])
 
 
 
