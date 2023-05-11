@@ -6,29 +6,29 @@ from typing import Dict, List, Tuple
 #   - Pelaajat on asetettava lohkoihin satunnaisesti.
 #   - Pelaajat on aseteltava lohkoihin "Lohko A" ja "Lohko B" siten, että lohkot ovat yhtä suuret, tai niin lähellä sitä kuin mahdollista.
 # Esimerkki funktion outputista:
-# groups = {
+# lohkot = {
 #     "Lohko A": ["Juuso", "Luukas", "Nosse"],
 #     "Lohko B": ["Piispanen", "Jukka", "Ville", "Ilmari"]
 # }
 
-def jaa_pelaajat_kahteen_lohkoon(players: List[str]) -> Dict[str, List[str]]:
-    team_1_size = int(len(players) / 2)
-    team_1_set = set(random.sample(players, team_1_size))
-    team_2_set = set(players) - team_1_set
-    team_1 = list(team_1_set)
-    team_2 = list(team_2_set)
-    groups = {
-        "Lohko A": team_1,
-        "Lohko B": team_2
+def jaa_pelaajat_kahteen_lohkoon(pelaajat: List[str]) -> Dict[str, List[str]]:
+    tiimi_1_koko = int(len(pelaajat) / 2)
+    tiimi_1_set = set(random.sample(pelaajat, tiimi_1_koko))
+    tiimi_2_set = set(pelaajat) - tiimi_1_set
+    tiimi_1 = list(tiimi_1_set)
+    tiimi_2 = list(tiimi_2_set)
+    lohkot = {
+        "Lohko A": tiimi_1,
+        "Lohko B": tiimi_2
     }
-    return groups
+    return lohkot
 
 
 # Osa 2, "No-brainer": Laske otteluparit lohkoille.
 #   - 'players_in_group' on lista yhden lohkon pelaajista.
 #   - Otteluparit muodostetaan siten, että lohkon jokainen pelaaja pelaa lohkon jokaista muuta pelaajaa vastaan kerran.
 # Esimerkki output funktiosta:
-# matches = [("Juuso", "Luukas"), ("Juuso", "Nosse"), ("Luukas", "Nosse")]
-def laske_otteluparit(players_in_group: List[str]) -> List[Tuple[str]]:
-    matches = [(a, b) for idx, a in enumerate(players_in_group) for b in players_in_group[idx + 1:]]
-    return matches
+# otteluparit = [("Juuso", "Luukas"), ("Juuso", "Nosse"), ("Luukas", "Nosse")]
+def laske_otteluparit(pelaajat_lohkossa: List[str]) -> List[Tuple[str]]:
+    otteluparit = [(pelaaja_a, pelaaja_b) for indeksi, pelaaja_a in enumerate(pelaajat_lohkossa) for pelaaja_b in pelaajat_lohkossa[indeksi + 1:]]
+    return otteluparit
