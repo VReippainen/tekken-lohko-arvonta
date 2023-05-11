@@ -1,6 +1,14 @@
 import random
 from typing import Dict, List, Tuple
 
+# Säännöt:
+#   - Tehtäväsi on kirjoittaa seuraavat kaksi funktiota siten, että vaatimukset täyttyvät ja testit menevät läpi.
+#   - Et saa käyttää internetiä ongelman ratkaisemiseen.
+#   - Saat lukea VAIN juuso.py ja tekken_arvonta.py -tiedostoja.
+#   - Saat editoida VAIN juuso.py -tiedostoa.
+#   - Saat ajaa .odinvenv -ympäristön python -tulkkia komennolla "python"
+# Suoritat ohjelman ajamalla tekken_arvonta.py -tiedostoa. Testit voit ajaa ajamalla odinin_tuomio.py -tiedostoa.
+
 # Osa 1, "Triviaali": Jaa pelaajat satunnaisesti kahteen lohkoon.
 #   - 'players' on lista pelaajista, jotka pitää asettaa lohkoihin.
 #   - Pelaajat on asetettava lohkoihin satunnaisesti.
@@ -10,17 +18,8 @@ from typing import Dict, List, Tuple
 #     "Lohko A": ["Juuso", "Luukas", "Nosse"],
 #     "Lohko B": ["Piispanen", "Jukka", "Ville", "Ilmari"]
 # }
-
 def jaa_pelaajat_kahteen_lohkoon(pelaajat: List[str]) -> Dict[str, List[str]]:
-    tiimi_1_koko = int(len(pelaajat) / 2)
-    tiimi_1_set = set(random.sample(pelaajat, tiimi_1_koko))
-    tiimi_2_set = set(pelaajat) - tiimi_1_set
-    tiimi_1 = list(tiimi_1_set)
-    tiimi_2 = list(tiimi_2_set)
-    lohkot = {
-        "Lohko A": tiimi_1,
-        "Lohko B": tiimi_2
-    }
+    lohkot = {}
     return lohkot
 
 
@@ -30,5 +29,5 @@ def jaa_pelaajat_kahteen_lohkoon(pelaajat: List[str]) -> Dict[str, List[str]]:
 # Esimerkki output funktiosta:
 # otteluparit = [("Juuso", "Luukas"), ("Juuso", "Nosse"), ("Luukas", "Nosse")]
 def laske_otteluparit(pelaajat_lohkossa: List[str]) -> List[Tuple[str]]:
-    otteluparit = [(pelaaja_a, pelaaja_b) for indeksi, pelaaja_a in enumerate(pelaajat_lohkossa) for pelaaja_b in pelaajat_lohkossa[indeksi + 1:]]
+    otteluparit = []
     return otteluparit
