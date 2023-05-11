@@ -1,11 +1,16 @@
 import random
 from typing import Dict, List, Tuple
 
-# Osa 1: Jaa pelaajat satunnaisesti kahteen lohkoon.
+# Osa 1, "Triviaali": Jaa pelaajat satunnaisesti kahteen lohkoon.
 #   - 'players' on lista pelaajista, jotka pitää asettaa lohkoihin.
 #   - Pelaajat on asetettava lohkoihin satunnaisesti.
-#   - Mikäli pelaajia on parillinen määrä, molemmat lohkot "Lohko A" ja "Lohko B" sisältävät yhtä monta pelaajaa.
-#   - Mikäli pelaajia on pariton määrä, toisessa lohkossa on 1 pelaaja enemmän kuin toisessa.
+#   - Pelaajat on aseteltava lohkoihin "Lohko A" ja "Lohko B" siten, että lohkot ovat yhtä suuret, tai niin lähellä sitä kuin mahdollista.
+# Esimerkki funktion outputista:
+# groups = {
+#     "Lohko A": ["Juuso", "Luukas", "Nosse"],
+#     "Lohko B": ["Piispanen", "Jukka", "Ville", "Ilmari"]
+# }
+
 def jaa_pelaajat_kahteen_lohkoon(players: List[str]) -> Dict[str, List[str]]:
     team_1_size = int(len(players) / 2)
     team_1_set = set(random.sample(players, team_1_size))
@@ -19,11 +24,11 @@ def jaa_pelaajat_kahteen_lohkoon(players: List[str]) -> Dict[str, List[str]]:
     return groups
 
 
-# Osa 2: Laske otteluparit lohkoille.
+# Osa 2, "No-brainer": Laske otteluparit lohkoille.
 #   - 'players_in_group' on lista yhden lohkon pelaajista.
 #   - Otteluparit muodostetaan siten, että lohkon jokainen pelaaja pelaa lohkon jokaista muuta pelaajaa vastaan kerran.
-#   - Paluusanoman on oltava lista ottelupareista (tuple).
-#       - Esimerkiksi: [("Ville", "Juuso"), ("Juuso", "Ilmari"), ("Ville, "Ilmari")]
+# Esimerkki output funktiosta:
+# matches = [("Juuso", "Luukas"), ("Juuso", "Nosse"), ("Luukas", "Nosse")]
 def laske_otteluparit(players_in_group: List[str]) -> List[Tuple[str]]:
     matches = [(a, b) for idx, a in enumerate(players_in_group) for b in players_in_group[idx + 1:]]
     return matches

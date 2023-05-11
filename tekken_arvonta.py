@@ -1,25 +1,41 @@
 import argparse
 import json
 import juuso
-from utils.runtu import JuusoException
+from valhalla.odin import Runtu
 
 
-def tekken_arvonta(players):
-    groups = juuso.jaa_pelaajat_kahteen_lohkoon(players)
-    print(json.dumps(groups, indent=4))
+def tekken_arvonta(pelaajat):
+    lohkot = juuso.jaa_pelaajat_kahteen_lohkoon(pelaajat)
+    print("\n")
+    print("############################")
+    print("Osa 1, \"Triviaali\": Jaa pelaajat satunnaisesti kahteen lohkoon.")
+    print("Lohkot ovat seuraavanlaiset:")
+    print("----------------------------")
+    print(json.dumps(lohkot, indent=4))
+    print("----------------------------")
+    print("############################")
+    print("\n")
 
-    for group in groups:
-        matches = juuso.laske_otteluparit(groups[group])
-        print(f"{group}")
-        for match in matches:
-            print(f"\t{match[0]} vs. {match[1]}")
+
+    print("############################")
+    print("Osa 2, \"No-brainer\": Laske otteluparit lohkoille.")
+    print("Otteluparit ovat seuraavanlaiset:")
+    print("----------------------------")
+    for lohko in lohkot:
+        otteluparit = juuso.laske_otteluparit(lohkot[lohko])
+        print(f"{lohko}:")
+        for ottelu in otteluparit:
+            print(f"\t{ottelu[0]} vs. {ottelu[1]}")
+    print("----------------------------")
+    print("############################")
+    print("\n")
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-p', '--players', nargs='+', required=True)
-    players_arg = parser.parse_args().players
-    unique_players = list(set(players_arg))
-    if len(unique_players) < 4:
-        raise JuusoException("Unohditko antaa pelaajat? Tarvitaan vähintään 4 uniikkia pelaajaa.")
-    tekken_arvonta(players_arg)
+    parser.add_argument('-p', '--pelaajat', nargs='+', required=True)
+    pelaajat_arg = parser.parse_args().pelaajat
+    uniikit_pelaajat = list(set(pelaajat_arg))
+    if len(uniikit_pelaajat) < 4:
+        raise Runtu("Tarvitaan vähintään 4 uniikkia pelaajaa.")
+    tekken_arvonta(pelaajat_arg)
