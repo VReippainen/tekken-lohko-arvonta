@@ -1,6 +1,7 @@
+import time
 import unittest
+from pygame import mixer
 from juuso import jaa_pelaajat_kahteen_lohkoon, laske_otteluparit
-from valhalla.odin import anna_runtua
 
 def stopTestRun(run):
     failures = run.failures
@@ -23,6 +24,11 @@ def stopTestRun(run):
                                                                                 """
         )
         print("Juuso, olet pettänyt odotukseni! Ota rangaistuksesi, kulauta juomasi ja palaa koodin ääreen viisaampana!")
+        mixer.init()
+        mixer.music.load("valhalla/runtu.mp3")
+        mixer.music.play()
+        time.sleep(18)
+
     elif len(failures) == 0:
         print(
             """                                                                                
@@ -42,14 +48,14 @@ def stopTestRun(run):
                                                                                 """
         )
         print("Juuso, olet osoittanut viisauttasi ja taitoasi, joka on vertaistaan vailla. Olet ansainnut paikkasi Valhallassa, sankarien salissa. Tervetuloa, rohkea viikinki!")
+        mixer.init()
+        mixer.music.load("valhalla/valhalla.mp3")
+        mixer.music.play()
+        time.sleep(21)
 
 
 class TestSplitToTwoRandomGroups(unittest.TestCase):
     current_result = None
-
-    def tearDown(self):
-        if len(self.current_result.failures) > 0:
-            anna_runtua(5)
 
     def run(self, result=None):
         self.current_result = result

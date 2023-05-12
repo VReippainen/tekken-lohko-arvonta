@@ -1,11 +1,6 @@
 import os
 import time
-import winsound
-
-
-def anna_runtua(n):
-    for _ in range(n):
-        winsound.Beep(3000, 100)
+from pygame import mixer
 
 class Runtu(Exception):
     def __init__(self, msg):
@@ -26,4 +21,7 @@ class Runtu(Exception):
                                                                                 """
         self.message += f"\nJuuso, olet pettänyt odotukseni! Ota rangaistuksesi, kulauta juomasi ja palaa koodin ääreen viisaampana!\n"
         super().__init__(self.message)
-        anna_runtua(3)
+        mixer.init()
+        mixer.music.load("valhalla/runtu.mp3")
+        mixer.music.play()
+        time.sleep(18)
