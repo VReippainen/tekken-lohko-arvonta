@@ -24,7 +24,7 @@ def jaa_pelaajat_kahteen_lohkoon(pelaajat: List[str]) -> Dict[str, List[str]]:
 
 
 # Osa 2, "No-brainer": Laske otteluparit lohkoille.
-#   - 'players_in_group' on lista yhden lohkon pelaajista.
+#   - 'pelaajat_lohkossa' on lista yhden lohkon pelaajista.
 #   - Otteluparit muodostetaan siten, että lohkon jokainen pelaaja pelaa lohkon jokaista muuta pelaajaa vastaan kerran.
 # Esimerkki output funktiosta:
 # otteluparit = [("Juuso", "Luukas"), ("Juuso", "Nosse"), ("Luukas", "Nosse")]
