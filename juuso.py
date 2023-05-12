@@ -12,11 +12,11 @@ from typing import Dict, List, Tuple
 # Osa 1, "Triviaali": Jaa pelaajat satunnaisesti kahteen lohkoon.
 #   - 'pelaajat' on lista pelaajista, jotka pitää asettaa lohkoihin.
 #   - Pelaajat on asetettava lohkoihin satunnaisesti.
-#   - Pelaajat on aseteltava lohkoihin "Lohko A" ja "Lohko B" siten, että lohkot ovat yhtä suuret, tai niin lähellä sitä kuin mahdollista.
+#   - Pelaajat on aseteltava lohkoihin "LOHKO A" ja "LOHKO B" siten, että lohkot ovat yhtä suuret, tai niin lähellä sitä kuin mahdollista.
 # Esimerkki funktion outputista:
 # lohkot = {
-#     "Lohko A": ["Juuso", "Luukas", "Nosse"],
-#     "Lohko B": ["Piispanen", "Jukka", "Ville", "Ilmari"]
+#     "LOHKO A": ["Juuso", "Luukas", "Nosse"],
+#     "LOHKO B": ["Piispanen", "Jukka", "Ville", "Ilmari"]
 # }
 def jaa_pelaajat_kahteen_lohkoon(pelaajat: List[str]) -> Dict[str, List[str]]:
     lohkot = {}

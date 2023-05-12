@@ -64,20 +64,20 @@ class TestSplitToTwoRandomGroups(unittest.TestCase):
     def test_group_structure(self):
         groups = jaa_pelaajat_kahteen_lohkoon(["jees", "joos", "jaas", "juuso"])
         self.assertIsInstance(groups, dict)
-        self.assertTrue("Lohko A" in groups)
-        self.assertTrue("Lohko B" in groups)
-        self.assertIsInstance(groups["Lohko A"], list)
-        self.assertIsInstance(groups["Lohko B"], list)
+        self.assertTrue("LOHKO A" in groups)
+        self.assertTrue("LOHKO B" in groups)
+        self.assertIsInstance(groups["LOHKO A"], list)
+        self.assertIsInstance(groups["LOHKO B"], list)
 
     def test_split_counts_even(self):
         player_names = [str(x) for x in range(1000)]
         groups = jaa_pelaajat_kahteen_lohkoon(player_names)
-        self.assertEqual(len(groups["Lohko A"]), len(groups["Lohko B"]))
+        self.assertEqual(len(groups["LOHKO A"]), len(groups["LOHKO B"]))
 
     def test_split_counts_odd(self):
         player_names = [str(x) for x in range(999)]
         groups = jaa_pelaajat_kahteen_lohkoon(player_names)
-        self.assertEqual(abs(len(groups["Lohko A"]) - len(groups["Lohko B"])), 1)
+        self.assertEqual(abs(len(groups["LOHKO A"]) - len(groups["LOHKO B"])), 1)
 
     def test_empty_list(self):
         self.assertEqual(laske_otteluparit([]), [])
