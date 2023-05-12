@@ -10,7 +10,7 @@ from typing import Dict, List, Tuple
 # Suoritat ohjelman ajamalla tekken_arvonta.py -tiedostoa. Testit voit ajaa ajamalla odinin_tuomio.py -tiedostoa.
 
 # Osa 1, "Triviaali": Jaa pelaajat satunnaisesti kahteen lohkoon.
-#   - 'players' on lista pelaajista, jotka pitää asettaa lohkoihin.
+#   - 'pelaajat' on lista pelaajista, jotka pitää asettaa lohkoihin.
 #   - Pelaajat on asetettava lohkoihin satunnaisesti.
 #   - Pelaajat on aseteltava lohkoihin "Lohko A" ja "Lohko B" siten, että lohkot ovat yhtä suuret, tai niin lähellä sitä kuin mahdollista.
 # Esimerkki funktion outputista:
