@@ -23,7 +23,7 @@ def stopTestRun(run):
                                                                                 
                                                                                 """
         )
-        print("Juuso, olet pettänyt odotukseni! Ota rangaistuksesi, kulauta juomasi ja palaa koodin ääreen viisaampana!")
+        print("Juuso \"Viikinki\" Jahnukainen, olet pettänyt odotukseni! Ota rangaistuksesi, kulauta juomasi ja palaa koodin ääreen viisaampana!")
         mixer.init()
         mixer.music.load("valhalla/runtu.mp3")
         mixer.music.play()

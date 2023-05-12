@@ -19,7 +19,7 @@ class Runtu(Exception):
       @@@           @@.                              @@@@           @@@,        
                                                                                 
                                                                                 """
-        self.message += f"\nJuuso, olet pettänyt odotukseni! Ota rangaistuksesi, kulauta juomasi ja palaa koodin ääreen viisaampana!\n"
+        self.message += f"\nJuuso \"Viikinki\" Jahnukainen, olet pettänyt odotukseni! Ota rangaistuksesi, kulauta juomasi ja palaa koodin ääreen viisaampana!\n"
         super().__init__(self.message)
         mixer.init()
         mixer.music.load("valhalla/runtu.mp3")
