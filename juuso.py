@@ -7,7 +7,8 @@ from typing import Dict, List, Tuple
 #   - Saat lukea VAIN juuso.py ja tekken_arvonta.py -tiedostoja.
 #   - Saat editoida VAIN juuso.py -tiedostoa.
 #   - Saat ajaa .odinvenv -ympäristön python -tulkkia komennolla "python"
-# Suoritat ohjelman ajamalla tekken_arvonta.py -tiedostoa. Testit voit ajaa ajamalla odinin_tuomio.py -tiedostoa.
+# Suoritat ohjelman ajamalla tekken_arvonta.py -tiedostoa. Esim. python tekken_arvonta.py -p Juuso Ragnar Leif Thor
+# Testit voit ajaa ajamalla odinin_tuomio.py -tiedostoa.
 
 # Osa 1, "Triviaali": Jaa pelaajat satunnaisesti kahteen lohkoon.
 #   - 'pelaajat' on lista pelaajista, jotka pitää asettaa lohkoihin.
@@ -18,8 +19,16 @@ from typing import Dict, List, Tuple
 #     "LOHKO A": ["Juuso", "Luukas", "Nosse"],
 #     "LOHKO B": ["Piispanen", "Jukka", "Ville", "Ilmari"]
 # }
+
+# &é"'(§è!çà)^$µùm:;=<>/.+M%£*¨¨_°³
+
 def jaa_pelaajat_kahteen_lohkoon(pelaajat: List[str]) -> Dict[str, List[str]]:
-    lohkot = {}
+    random.shuffle(pelaajat)
+    print(pelaajat[:int(len(pelaajat)/2)])
+    lohkot = {
+        "LOHKO A":pelaajat[:int(len(pelaajat)/2)],
+        "LOHKO B":pelaajat[int(len(pelaajat)/2):]
+    }
     return lohkot
 
 
@@ -30,4 +39,12 @@ def jaa_pelaajat_kahteen_lohkoon(pelaajat: List[str]) -> Dict[str, List[str]]:
 # otteluparit = [("Juuso", "Luukas"), ("Juuso", "Nosse"), ("Luukas", "Nosse")]
 def laske_otteluparit(pelaajat_lohkossa: List[str]) -> List[Tuple[str]]:
     otteluparit = []
+    pelaajat = set(pelaajat_lohkossa)
+    try:
+        while i := pelaajat.pop():
+            for j in pelaajat:
+                otteluparit.append((i,j))
+    except KeyError:
+        pass
+    random.shuffle(otteluparit)
     return otteluparit
